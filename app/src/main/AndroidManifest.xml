@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.navigation">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar"
+        tools:ignore="ExtraText,GoogleAppIndexingWarning">
+        <activity android:name=".Admin.removetempreq"></activity>
+        <activity android:name=".others.details1" />
+        <activity android:name=".Admin.details" />
+        <activity android:name=".Admin.req_retrieve1" />
+        <activity android:name=".others.webview" />
+        <activity android:name=".others.Remove_user_book" />
+        <activity android:name=".Admin.add_new_book" />
+        <activity android:name=".lending.show_lend_data" />
+        <activity android:name=".lending.add_book" />
+        <activity android:name=".Admin.return_book_detail" />
+        <activity android:name=".others.issue_list" />
+        <activity android:name=".Admin.return_book" />
+        <activity android:name=".Admin.req_retrieve" />
+        <activity
+            android:name=".Admin.Admin"
+            android:label="Admin" />
+        <activity android:name=".activity.BookDetail" />
+        <activity android:name=".login_registeration.Registration" />
+        <activity
+            android:name=".activity.LendBookActivity"
+            android:label="Lending" />
+        <activity android:name=".activity.AboutUsActivity" />
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.UserProfile" />
+        <activity android:name=".activity.Verification" />
+        <activity android:name=".activity.Verification1" />
+        <activity android:name=".login_registeration.Login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
