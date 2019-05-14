@@ -78,21 +78,11 @@ public class MainActivity extends AppCompatActivity {
         mHandler = new Handler();
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+
         navHeader = navigationView.getHeaderView(0);
-        txtName = (TextView) navHeader.findViewById(R.id.name);
         txtWebsite = (TextView) navHeader.findViewById(R.id.website);
         imgNavHeaderBg = (ImageView) navHeader.findViewById(R.id.img_header_bg);
-        imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         loadNavHeader();
         setUpNavigationView();
 
@@ -161,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
         });
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
-        txtName.setText(name);
+
         txtWebsite.setText(firebaseUser.getEmail());
         navigationView.getMenu().getItem(3).setActionView(R.layout.menu_dot);
     }
@@ -171,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
         setToolbarTitle();
         if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) != null) {
             drawer.closeDrawers();
-            toggleFab();
+
             return;
         }
         Runnable mPendingRunnable = new Runnable() {
@@ -188,7 +178,6 @@ public class MainActivity extends AppCompatActivity {
         if (mPendingRunnable != null) {
             mHandler.post(mPendingRunnable);
         }
-        toggleFab();
         drawer.closeDrawers();
         invalidateOptionsMenu();
     }
@@ -350,10 +339,5 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void toggleFab() {
-        if (navItemIndex == 0)
-            fab.show();
-        else
-            fab.hide();
-    }
+
 }

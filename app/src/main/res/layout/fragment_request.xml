@@ -71,7 +71,7 @@
                 android:id="@+id/req13"
                 android:drawableTint="#FF4081"
                 android:hint="ISBN"
-                android:inputType="text" />
+                android:inputType="number" />
 
 
             <Spinner

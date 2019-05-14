@@ -70,10 +70,10 @@ public class adapter2 extends RecyclerView.Adapter<adapter.myviewholder> {
         TextView textView = holder.Text;
         TextView textView1 = holder.Text1;
         userbin1 = mlist.get(position);
-        String data = userbin1.optString("name");
-        String data1 = userbin1.optString("genre");
-        textView.setText(data1);
-        textView1.setText(data);
+        String data = userbin1.optString("pref");
+        //String data1 = userbin1.optString("bookname");
+        textView.setText(data);
+        textView1.setText("BOOK_NAME");
     }
 
     @Override

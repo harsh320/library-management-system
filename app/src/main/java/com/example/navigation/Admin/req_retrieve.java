@@ -31,15 +31,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class req_retrieve extends AppCompatActivity {
+
 ListView listView;
     ArrayAdapter<String> arrayAdapter;
     String branch1;
@@ -48,11 +53,13 @@ ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_req_retrieve);
         listView=findViewById(R.id.reqret2);
         Intent intent=getIntent();
 
         branch1 = intent.getStringExtra("EXTRA_MESSAGE");
+
         showdata();
     }
     private void showdata() {
@@ -91,7 +98,7 @@ ListView listView;
                         list.add(bookname);
                     }
 
-                    for (String str : list) {
+                   /* for (String str : list) {
                         counter.put(str, 1 + (counter.containsKey(str) ? counter.get(str) : 0));
                     }
                     final List<String> list2 = new ArrayList<String>(counter.keySet());
@@ -104,8 +111,32 @@ ListView listView;
                     for (String i : list2) {
                         list1.add(i);
                     }
-                    Collections.reverse(list1);
-                    arrayAdapter=new ArrayAdapter<String>(req_retrieve.this, R.layout.book_list_item, R.id.book_name,list1);
+                    Collections.reverse(list1);*/
+
+                    Map<String, Integer> map123 = new HashMap<>();
+                    ArrayList<String> outputArray123 = new ArrayList<>();
+
+                    // Assign elements and their count in the list and map
+                    for (String current : list) {
+                        int count = map123.getOrDefault(current, 0);
+                        map123.put(current, count + 1);
+                        outputArray123.add(current);
+                    }
+
+                    // Compare the map by value
+                    SortComparator comp = new SortComparator(map123);
+
+                    // Sort the map using Collections CLass
+                    Set<String> hash_Set = new HashSet<String>();
+                    Collections.sort(outputArray123, comp);
+                    for(int i=0;i<outputArray123.size();i++)
+                    {
+                      hash_Set.add(outputArray123.get(i));
+                    }
+                    ArrayList<String> list456 = new ArrayList<>(hash_Set);
+
+
+                    arrayAdapter=new ArrayAdapter<String>(req_retrieve.this, R.layout.book_list_item, R.id.book_name,list456);
                     listView.setAdapter(arrayAdapter);
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
@@ -167,4 +198,31 @@ ListView listView;
         requestQueue.add(stringRequest);
 
     }
-}
+    class SortComparator implements Comparator<String> {
+        private final Map<String, Integer> freqMap;
+
+        // Assign the specified map
+        SortComparator(Map<String, Integer> tFreqMap)
+        {
+            this.freqMap = tFreqMap;
+        }
+
+        // Compare the values
+        @Override
+        public int compare(String k1, String k2)
+        {
+
+            // Compare value by frequency
+            int freqCompare = freqMap.get(k2).compareTo(freqMap.get(k1));
+
+            // Compare value if frequency is equal
+            int valueCompare = k1.compareTo(k2);
+
+            // If frequency is equal, then just compare by value, otherwise -
+            // compare by the frequency.
+            if (freqCompare == 0)
+                return valueCompare;
+            else
+                return freqCompare;
+        }}}
+

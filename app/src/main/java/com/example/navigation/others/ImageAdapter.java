@@ -24,7 +24,7 @@ public class ImageAdapter  extends PagerAdapter {
 
 
     private int[] sliderImageId = new int[]{
-            R.drawable.book2,R.drawable.book3,R.drawable.book2
+            R.drawable.book2,R.drawable.book3
     };
 
     @Override

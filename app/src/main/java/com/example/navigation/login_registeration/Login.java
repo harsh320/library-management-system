@@ -48,6 +48,7 @@ public class Login extends AppCompatActivity {
         final FirebaseUser user = auth1.getCurrentUser();
         if(user!=null)
         {
+
             if(user.getUid().equalsIgnoreCase("91WJZZSoBMMKR8JdRPlUl4juKJx2"))
             {
                 Toast.makeText(Login.this,user.getUid(),Toast.LENGTH_LONG).show();
@@ -56,12 +57,13 @@ public class Login extends AppCompatActivity {
                 finish();
             }
 
-             else if(user.isEmailVerified()) {
+              else if(user.isEmailVerified())
+              {
                  Toast.makeText(Login.this,"Welcome",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(Login.this, MainActivity.class);
                 startActivity(intent);
                 this.finish();
-            }
+              }
         }
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override

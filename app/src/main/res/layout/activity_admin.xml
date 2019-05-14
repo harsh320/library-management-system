@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="22dp"
                 android:background="#d67601"
-                android:text="ISSUE LIST"
+                android:text="ISSUE REQUEST LIST"
                 android:id="@+id/admin4"
                 android:textAllCaps="false"
                 android:textColor="#fff"

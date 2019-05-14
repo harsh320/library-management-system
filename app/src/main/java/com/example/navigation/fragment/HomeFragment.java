@@ -104,7 +104,7 @@ public class HomeFragment extends Fragment {
                     alertDialog.setTitle("Suggestion Box");
 
                     // Setting Dialog Message
-                    alertDialog.setMessage("If you have any suggestions to improve our system please feel free to send us through this Suggestion Box                                  Write here:-");
+                    alertDialog.setMessage("If you have any suggestions to improve our system please feel free to send us through this Suggestion Box                                                             Write here:-");
                 final EditText input = new EditText(getContext());
 
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -322,7 +322,7 @@ public class HomeFragment extends Fragment {
                                             {
                                                 jsonObjects.add(child3);
                                             }
-
+                                            adapter2.updateView(jsonObjects);
                                         }
                                     }
 

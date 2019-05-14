@@ -52,9 +52,7 @@ public class RequestFragment extends Fragment {
         editText1=view.findViewById(R.id.req11);
         editText2=view.findViewById(R.id.req12);
         editText3=view.findViewById(R.id.req13);
-        a=editText1.getText().toString().trim();
-        b=editText2.getText().toString().trim();
-        c=editText3.getText().toString().trim();
+
         button=view.findViewById(R.id.req123);
         spin = (Spinner) view.findViewById(R.id.spinner);
 
@@ -76,6 +74,9 @@ public class RequestFragment extends Fragment {
         return view;
     }
     private void upload() throws IOException {
+        a=editText1.getText().toString().trim();
+        b=editText2.getText().toString().trim();
+        c=editText3.getText().toString().trim();
         if(c!=null&&c.length()==13)
         {
             final ProgressDialog progressDialog = new ProgressDialog(getContext());
